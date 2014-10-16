@@ -43,7 +43,7 @@ download_friends <- function(fb_oauth){
 
 #GRAPH
 
-simple_graph <- function(ny_network){
+simple_graph <- function(my_network){
       #my_network <- getNetwork(fb_oauth, format="adj.matrix")
       #save(my_network, file="my_network")
       #OR
@@ -69,7 +69,7 @@ plot_drl<-function(my_graph_simple){
       #through a particular individual
       hc4 <- heat.colors(10,alpha=0.9)
       betweenness <- betweenness(my_graph_simple)
-      vcolors <- factor(cut(betweenness, quantile(betweenness), include.lowest = TRUE))
+      #vcolors <- factor(cut(betweenness, quantile(betweenness), include.lowest = TRUE))
       vcolors <- quantcut(betweenness, q=seq(0,1,by=0.1))
       vcolors2 <- hc4[vcolors]
       
@@ -90,7 +90,7 @@ plot_fr<-function(my_graph_simple){
       #through a particular individual
       hc4 <- heat.colors(10,alpha=0.9)
       betweenness <- betweenness(my_graph_simple)
-      vcolors <- factor(cut(betweenness, quantile(betweenness), include.lowest = TRUE))
+      #vcolors <- factor(cut(betweenness, quantile(betweenness), include.lowest = TRUE))
       vcolors <- quantcut(betweenness, q=seq(0,1,by=0.1))
       vcolors2 <- hc4[vcolors]
       return(plot(my_graph_simple, vertex.size=2, vertex.color=vcolors2,
@@ -99,7 +99,7 @@ plot_fr<-function(my_graph_simple){
                   edge.arrow.size=0, edge.curved=TRUE,layout=layout.fr))
 }
 
-plot_fr<-function(my_graph_simple){
+plot_kk<-function(my_graph_simple){
       layout.kk <- layout.kamada.kawai(my_graph_simple,options=list(simmer.attraction=0))
       
       E(my_graph_simple)$color <- rgb(.5, .5, 0, 0.15)
@@ -110,7 +110,7 @@ plot_fr<-function(my_graph_simple){
       #through a particular individual
       hc4 <- heat.colors(10,alpha=0.9)
       betweenness <- betweenness(my_graph_simple)
-      vcolors <- factor(cut(betweenness, quantile(betweenness), include.lowest = TRUE))
+      #vcolors <- factor(cut(betweenness, quantile(betweenness), include.lowest = TRUE))
       vcolors <- quantcut(betweenness, q=seq(0,1,by=0.1))
       vcolors2 <- hc4[vcolors]
       
